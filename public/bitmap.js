@@ -5,6 +5,8 @@ function Bitmap(width, height) {
         row_arr.fill("white");
         this.grid.push(row_arr);
     }
+    this.updates = [];
+
 }
 
 Bitmap.prototype.render = function(target_element) {
@@ -38,9 +40,13 @@ Bitmap.prototype.handleEvent = function(event) {
         var row = parseInt(event.currentTarget.dataset.row);
         var col = parseInt(event.currentTarget.dataset.col);
         if(tool === "draw") {
+            let singleUpdate = [row, col, paint_color];
+            this.updates.push(singleUpdate);
             this.setColor(row, col, paint_color);
         } else if(tool == "fill") {
+            
             this.fill(row, col, paint_color);
         }
     }
+    
 };
