@@ -13,6 +13,8 @@ Bitmap.prototype.fill = function(row, col, new_color) {
             [n_r, n_c] = neighbors.shift();
             if(this.grid[n_r] && this.grid[n_r][n_c] === old_color) {
                 this.setColor(n_r, n_c, new_color);
+                let singleUpdate = [n_r, n_c, new_color];
+                this.updates.push(singleUpdate);
                 queue.push([n_r, n_c]);
             }
         }

@@ -44,7 +44,8 @@ Bitmap.prototype.handleEvent = function(event) {
             this.updates.push(singleUpdate);
             this.setColor(row, col, paint_color);
         } else if(tool == "fill") {
-            
+            let singleUpdate = [row, col, paint_color];
+            this.updates.push(singleUpdate);
             this.fill(row, col, paint_color);
         }
     }
