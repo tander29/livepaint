@@ -17,19 +17,15 @@ function sendUpdates() {
     fetch('/updates', postReq)
         .then(response => response.json())
         .then(data => {
+            console.log(data.globalUpdates.length)
             clientUpdateCount += data.globalUpdates.length;
-            console.log();
             data.globalUpdates.forEach(element => {
                 let row = element[0];
                 let col = element[1];
                 let color = element[2];
                 bitmap.setColor(row, col, color)
             });
-                
-        
-            // console.log(data)
-            // console.log(data.globalUpdates[0][1])
-            // console.log(data.globalUpdates[0][1][1])
+
         })
     bitmap.updates = [];
     // console.log(bitmap.updates)
